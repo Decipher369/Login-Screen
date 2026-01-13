@@ -1,0 +1,506 @@
+/* ===========================
+   CSS Variables & Reset
+   =========================== */
+:root {
+    /* Colors */
+    --color-bg-warm: linear-gradient(135deg, #F5E6D3 0%, #F0DCC8 100%);
+    --color-cream: #FBF5EE;
+    --color-peach: #F4DCC8;
+    --color-peach-dark: #E8C9B5;
+    --color-purple: #722F5E;
+    --color-purple-dark: #5A2449;
+    --color-purple-light: #8A3970;
+    --color-coral: #D77A61;
+    --color-teal: #5D8A8A;
+    --color-text: #2D2D2D;
+    --color-text-light: #666666;
+    --color-white: #FFFFFF;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    
+    /* Effects */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--color-bg-warm);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ===========================
+   Container Layout
+   =========================== */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+/* ===========================
+   Left Panel - Illustration
+   =========================== */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: var(--spacing-xl);
+    background: var(--color-cream);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+/* Decorative floating elements */
+.decoration {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.decoration-1 {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #C95D4A 0%, #A64936 100%);
+    top: 20px;
+    left: 20px;
+}
+
+.decoration-2 {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #8A3970 0%, #722F5E 100%);
+    top: 80px;
+    right: 120px;
+}
+
+.decoration-3 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #E8A5C0 0%, #D77A9E 100%);
+    bottom: 40px;
+    right: 60px;
+    opacity: 0.4;
+}
+
+/* Illustration wrapper */
+.illustration-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: var(--spacing-lg) 0;
+}
+
+.illustration-bg {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(135deg, var(--color-peach) 0%, var(--color-peach-dark) 100%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.skeleton-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+/* Password bubbles */
+.password-bubble {
+    position: absolute;
+    background: var(--color-purple);
+    color: var(--color-white);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 20px;
+    font-size: var(--font-size-lg);
+    letter-spacing: 2px;
+    z-index: 3;
+    box-shadow: var(--shadow-md);
+}
+
+.password-bubble-left {
+    top: 30%;
+    left: -20px;
+}
+
+.password-bubble-right {
+    top: 30%;
+    right: -20px;
+}
+
+/* Decorative foliage */
+.foliage {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(135deg, #C95D4A 0%, #D77A61 50%, #E8A563 100%);
+    border-radius: 50% 50% 0 0;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.foliage::before,
+.foliage::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 80px;
+    background: inherit;
+    border-radius: 50% 50% 0 0;
+}
+
+.foliage::before {
+    left: -30px;
+    transform: rotate(-15deg);
+}
+
+.foliage::after {
+    right: -30px;
+    transform: rotate(15deg);
+}
+
+/* Tagline */
+.tagline {
+    text-align: center;
+    z-index: 3;
+    margin-top: var(--spacing-lg);
+}
+
+.tagline h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.tagline p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+}
+
+/* ===========================
+   Right Panel - Login Form
+   =========================== */
+.right-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.login-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 460px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-card h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+    text-align: center;
+}
+
+.subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Google Button */
+.google-btn {
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: var(--color-white);
+    border: 2px solid #E5E5E5;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    transition: var(--transition);
+    margin-bottom: var(--spacing-md);
+}
+
+.google-btn:hover {
+    background: #F9F9F9;
+    border-color: #D0D0D0;
+}
+
+/* Divider */
+.divider {
+    position: relative;
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #E5E5E5;
+}
+
+.divider span {
+    position: relative;
+    background: var(--color-white);
+    padding: 0 var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 2px solid #E5E5E5;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-purple);
+}
+
+.form-group input::placeholder {
+    color: #AAAAAA;
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Custom Checkbox */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-purple);
+    border-radius: 4px;
+    margin-right: var(--spacing-xs);
+    position: relative;
+    transition: var(--transition);
+}
+
+.checkbox-label input:checked ~ .checkmark {
+    background: var(--color-purple);
+}
+
+.checkbox-label input:checked ~ .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: var(--color-white);
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.forgot-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-purple);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.forgot-link:hover {
+    color: var(--color-purple-dark);
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: var(--color-purple);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: var(--spacing-md);
+}
+
+.login-btn:hover {
+    background: var(--color-purple-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 47, 94, 0.3);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.login-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Signup Text */
+.signup-text {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+}
+
+.signup-link {
+    color: var(--color-purple);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.signup-link:hover {
+    color: var(--color-purple-dark);
+}
+
+/* Error message */
+.error-message {
+    background: #FEE;
+    color: #C33;
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 968px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-sm);
+    }
+    
+    .left-panel {
+        min-height: 400px;
+    }
+    
+    .illustration-wrapper {
+        max-width: 300px;
+    }
+    
+    .illustration-bg {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .password-bubble {
+        font-size: var(--font-size-base);
+        padding: 6px var(--spacing-sm);
+    }
+}
+
+@media (max-width: 640px) {
+    .login-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .left-panel {
+        padding: var(--spacing-lg);
+    }
+    
+    .decoration-2,
+    .decoration-3 {
+        display: none;
+    }
+}
