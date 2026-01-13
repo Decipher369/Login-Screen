@@ -11,6 +11,48 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginBtn = document.getElementById('loginBtn');
     const googleBtn = document.getElementById('googleBtn');
 
+    // ===========================
+    // Eye Tracking Feature
+    // ===========================
+    const eyeballs = document.querySelectorAll('.eyeball');
+    const eyeSockets = document.querySelectorAll('.eye-socket');
+
+    /**
+     * Track mouse movement and move eyeballs accordingly
+     */
+    document.addEventListener('mousemove', function (e) {
+        eyeballs.forEach((eyeball, index) => {
+            const socket = eyeSockets[index];
+            const socketRect = socket.getBoundingClientRect();
+
+            // Get center of eye socket
+            const socketCenterX = socketRect.left + socketRect.width / 2;
+            const socketCenterY = socketRect.top + socketRect.height / 2;
+
+            // Calculate angle between mouse and eye center
+            const deltaX = e.clientX - socketCenterX;
+            const deltaY = e.clientY - socketCenterY;
+            const angle = Math.atan2(deltaY, deltaX);
+
+            // Maximum distance eyeball can move (8px from center)
+            const maxDistance = 8;
+
+            // Calculate distance to mouse (clamped to maxDistance)
+            const distance = Math.min(
+                Math.sqrt(deltaX * deltaX + deltaY * deltaY) / 20,
+                maxDistance
+            );
+
+            // Calculate new position
+            const moveX = Math.cos(angle) * distance;
+            const moveY = Math.sin(angle) * distance;
+
+            // Apply transform to move eyeball
+            eyeball.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    });
+
+
     /**
      * Validate email format
      * @param {string} email - Email address to validate

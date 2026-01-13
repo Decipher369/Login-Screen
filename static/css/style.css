@@ -15,14 +15,14 @@
     --color-text: #2D2D2D;
     --color-text-light: #666666;
     --color-white: #FFFFFF;
-    
+
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    
+
     /* Typography */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-size-xs: 0.75rem;
@@ -31,7 +31,7 @@
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.5rem;
     --font-size-2xl: 2rem;
-    
+
     /* Effects */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -140,6 +140,60 @@ body {
     z-index: 2;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
 }
+
+/* Eye Tracking */
+.eye-sockets {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.eye-socket {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye-left {
+    top: 22%;
+    left: 40%;
+}
+
+.eye-right {
+    top: 22%;
+    right: 40%;
+}
+
+.eyeball {
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 35% 35%, #4A90E2, #2E5C8A);
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.1s ease-out;
+}
+
+.eyeball::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
 
 /* Password bubbles */
 .password-bubble {
@@ -373,11 +427,11 @@ body {
     transition: var(--transition);
 }
 
-.checkbox-label input:checked ~ .checkmark {
+.checkbox-label input:checked~.checkmark {
     background: var(--color-purple);
 }
 
-.checkbox-label input:checked ~ .checkmark::after {
+.checkbox-label input:checked~.checkmark::after {
     content: '✓';
     position: absolute;
     color: var(--color-white);
@@ -470,20 +524,20 @@ body {
         grid-template-columns: 1fr;
         padding: var(--spacing-sm);
     }
-    
+
     .left-panel {
         min-height: 400px;
     }
-    
+
     .illustration-wrapper {
         max-width: 300px;
     }
-    
+
     .illustration-bg {
         width: 220px;
         height: 220px;
     }
-    
+
     .password-bubble {
         font-size: var(--font-size-base);
         padding: 6px var(--spacing-sm);
@@ -494,11 +548,11 @@ body {
     .login-card {
         padding: var(--spacing-lg);
     }
-    
+
     .left-panel {
         padding: var(--spacing-lg);
     }
-    
+
     .decoration-2,
     .decoration-3 {
         display: none;
